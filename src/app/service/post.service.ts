@@ -18,7 +18,19 @@ export class PostService {
     return this.http.post(POST_API + 'create', post);
   }
 
-  getAllPosts(): Observable<any>{
+  getAllPosts(): Observable<any> {
     return this.http.get(POST_API + 'all');
+  }
+
+  getPostForUser(): Observable<any> {
+    return this.http.get(POST_API + 'user/posts')
+  }
+
+  deletePost(id: number): Observable<any> {
+    return this.http.post(POST_API + id + '/delete', null);
+  }
+
+  likePost(id: number, username: string): Observable<any> {
+    return this.http.post(POST_API + id + "/" + username + "/like", null);
   }
 }
