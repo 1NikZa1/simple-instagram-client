@@ -1,0 +1,21 @@
+<mat-toolbar>
+  <span routerLink="/main" style="cursor: pointer;margin-left: 20px">SimpleInstagram</span>
+
+  <span class="spacer"></span>
+
+  <button mat-icon-button *ngIf="!isLoggedIn" matTooltip="Login" routerLink="/login">
+    <mat-icon>login</mat-icon>
+  </button>
+
+  <h3 *ngIf="isDataLoaded">{{this.user.firstname}} {{this.user.lastname}}</h3>
+
+  <button mat-icon-button *ngIf="isLoggedIn" [matMenuTriggerFor]="menu" matTooltip="Profile">
+    <mat-icon>person</mat-icon>
+  </button>
+  <mat-menu id="menu-item" #menu="matMenu">
+    <button mat-menu-item routerLink="/profile">Profile</button>
+    <button (click)="logout()" mat-menu-item>
+      Logout
+    </button>
+  </mat-menu>
+</mat-toolbar>
