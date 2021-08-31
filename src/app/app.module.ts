@@ -14,6 +14,9 @@ import { RegisterComponent } from './auth/register/register.component';
 import { NavigationComponent } from './layout/navigation/navigation.component';
 import { IndexComponent } from './layout/index/index.component';
 import { ProfileComponent } from './user/profile/profile.component';
+import { UserPostsComponent } from './user/user-posts/user-posts.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
+import { AddPostComponent } from './user/add-post/add-post.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { ProfileComponent } from './user/profile/profile.component';
     RegisterComponent,
     NavigationComponent,
     IndexComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserPostsComponent,
+    EditUserComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
