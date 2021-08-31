@@ -1,12 +1,13 @@
-
 <div class="login-page">
   <h2>Login</h2>
-  <form [formGroup]="loginForm" >
+  <form [formGroup]="loginForm">
     <div>
       <div class="justify-content-center mb-3">
-        <mat-form-field appearance="outline" >
+        <mat-form-field appearance="outline">
           <mat-label>Email Address</mat-label>
-          <input matInput
+          <input matInput type="email"
+                 autocomplete="on"
+                 id="email"
                  formControlName="username">
         </mat-form-field>
       </div>
@@ -14,6 +15,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
           <input matInput type="password"
+                 autocomplete="on"
+                 id="password"
                  formControlName="password">
         </mat-form-field>
       </div>

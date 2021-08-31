@@ -1,10 +1,10 @@
-<mat-toolbar>
+<mat-toolbar class="toolbar">
   <span routerLink="/main" style="cursor: pointer;margin-left: 20px">SimpleInstagram</span>
 
   <span class="spacer"></span>
 
   <button mat-icon-button *ngIf="!isLoggedIn" matTooltip="Login" routerLink="/login">
-    <mat-icon>login</mat-icon>
+    <mat-icon>vpn_key</mat-icon>
   </button>
 
   <h3 *ngIf="isDataLoaded">{{this.user.firstname}} {{this.user.lastname}}</h3>

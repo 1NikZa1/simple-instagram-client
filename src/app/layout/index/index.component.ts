@@ -63,23 +63,23 @@ export class IndexComponent implements OnInit {
   }
 
   likePost(postId: number, postIndex: number): void {
-    const post = this.posts[postIndex];
+    const  post = this.posts[postIndex];
     console.log(post);
 
-    if (!post.usersLiked?.includes(this.user.username)) {
+    if (!post.usersLiked!.includes(this.user.username)) {
       this.postService.likePost(postId, this.user.username)
         .subscribe(() => {
-          post.usersLiked?.push(this.user.username);
-          this.notificationService.showSnackBar('liked');
+          post.usersLiked!.push(this.user.username);
+          this.notificationService.showSnackBar('Liked!');
         });
     } else {
       this.postService.likePost(postId, this.user.username)
         .subscribe(() => {
-          const index= post.usersLiked?.indexOf(this.user.username);
-          if (index! > -1) {
-            post.usersLiked?.splice(index!, 1);
+          const index = post.usersLiked!.indexOf(this.user.username, 0);
+          if (index > -1) {
+            post.usersLiked!.splice(index, 1);
           }
-        })
+        });
     }
   }
 
