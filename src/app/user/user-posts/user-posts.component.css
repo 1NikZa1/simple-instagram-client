@@ -1,0 +1,10 @@
+.post-card {
+  display: block;
+  margin: 1rem auto;
+  width: 80%;
+}
+
+.mat-icon {
+  transform: scale(0.5);
+}
+

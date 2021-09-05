@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../service/auth.service';
 import {NotificationService} from '../../service/notification.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -13,6 +14,7 @@ export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
 
   constructor(
+    private router: Router,
     private authService: AuthService,
     private notificationService: NotificationService,
     private fb: FormBuilder
@@ -47,6 +49,7 @@ export class RegisterComponent implements OnInit {
     }).subscribe(data => {
       console.log(data);
       this.notificationService.showSnackBar('Successfully Registered!');
+      this.router.navigate(['/login']);
     }, error => {
       this.notificationService.showSnackBar('Something went wrong during registration');
     });
