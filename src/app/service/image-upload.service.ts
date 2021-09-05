@@ -25,11 +25,21 @@ export class ImageUploadService {
     return this.http.post(IMAGE_API + postId + '/upload', uploadData);
   }
 
+  uploadImageToGroup(file: File, groupId: number): Observable<any> {
+    const uploadData = new FormData();
+    uploadData.append('file', file);
+    return this.http.post(IMAGE_API + 'community/' + groupId + '/upload', uploadData);
+  }
+
   getProfileImage(): Observable<any> {
     return this.http.get(IMAGE_API + 'profileImage');
   }
 
   getImageToPost(postId: number): Observable<any> {
     return this.http.get(IMAGE_API + postId + "/image");
+  }
+
+  getImageToGroup(groupId: number): Observable<any> {
+    return this.http.get(IMAGE_API + 'community/' + groupId + '/image');
   }
 }

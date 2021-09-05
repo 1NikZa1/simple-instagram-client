@@ -41,7 +41,7 @@ export class AddPostComponent implements OnInit {
   }
 
   submit(): void {
-    this.postService.createPost({
+    this.postService.createPostForUser({
       title: this.postForm.value.title,
       caption: this.postForm.value.caption,
       location: this.postForm.value.location

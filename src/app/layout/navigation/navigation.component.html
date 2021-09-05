@@ -7,8 +7,15 @@
     <mat-icon>vpn_key</mat-icon>
   </button>
 
-  <h3 *ngIf="isDataLoaded">{{this.user.firstname}} {{this.user.lastname}}</h3>
 
+
+  <button mat-icon-button routerLink="/groups">
+    <mat-icon>groups</mat-icon>
+  </button>
+
+  <span class="spacer"></span>
+
+  <h3 *ngIf="isDataLoaded">{{this.user.firstname}} {{this.user.lastname}}</h3>
   <button mat-icon-button *ngIf="isLoggedIn" [matMenuTriggerFor]="menu" matTooltip="Profile">
     <mat-icon>person</mat-icon>
   </button>

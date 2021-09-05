@@ -7,11 +7,13 @@ import {AuthGuardService} from "./helper/auth-guard.service";
 import {ProfileComponent} from "./user/profile/profile.component";
 import {UserPostsComponent} from "./user/user-posts/user-posts.component";
 import {AddPostComponent} from "./user/add-post/add-post.component";
+import {AllGroupsComponent} from "./group/all-groups/all-groups.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'main', component: IndexComponent, canActivate: [AuthGuardService]},
+  {path: 'groups', component: AllGroupsComponent, canActivate: [AuthGuardService]},
   {path: '', redirectTo: 'main', pathMatch: 'full'},
   {
     path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService], children: [

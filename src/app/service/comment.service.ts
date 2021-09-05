@@ -4,7 +4,6 @@ import {Observable} from "rxjs";
 
 const COMMENT_API = "http://localhost:8080/api/comment/";
 
-
 @Injectable({
   providedIn: 'root'
 })

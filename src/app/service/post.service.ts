@@ -14,8 +14,12 @@ export class PostService {
   constructor(private http: HttpClient) {
   }
 
-  createPost(post: Post): Observable<any> {
+  createPostForUser(post: Post): Observable<any> {
     return this.http.post(POST_API + 'create', post);
+  }
+
+  createPostForGroup(post: Post, groupId: number): Observable<any> {
+    return this.http.post(POST_API + groupId + '/create', post);
   }
 
   getAllPosts(): Observable<any> {
@@ -24,6 +28,10 @@ export class PostService {
 
   getPostForUser(): Observable<any> {
     return this.http.get(POST_API + 'user/posts')
+  }
+
+  getPostsForGroup(groupId: number): Observable<any> {
+    return this.http.get(POST_API + 'community/' + groupId + '/posts')
   }
 
   deletePost(id: number): Observable<any> {
