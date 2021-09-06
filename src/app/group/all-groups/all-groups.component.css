@@ -1,0 +1,13 @@
+.post-card {
+  display: block;
+  margin: 1rem auto;
+  width: 200px;
+  height: auto;
+}
+
+.all-groups{
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  padding-top: 3rem;
+}

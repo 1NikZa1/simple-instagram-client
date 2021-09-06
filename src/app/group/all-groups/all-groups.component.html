@@ -1,1 +1,30 @@
-<p>all-groups works!</p>
+
+<div *ngIf="isGroupsLoaded" xmlns="http://www.w3.org/1999/html" class="all-groups">
+  <div style="text-align: right">
+    <button mat-flat-button color="primary" routerLink="/profile/add">Add Post</button>
+  </div>
+
+  <h2>{{groups.length}} groups</h2>
+
+  <mat-card class="post-card" *ngFor="let group of groups; let i = index">
+    <mat-card-header style="text-align: left">
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{group.name}}</mat-card-title>
+      <mat-card-subtitle>{{group.description}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="formatImage(group.image)" alt="post image">
+
+
+<!--    <mat-card-actions align="end">-->
+<!--      <button color="warn" mat-button (click)="removePost(post, i)">-->
+<!--        <mat-icon color="warn">delete</mat-icon>-->
+<!--        Remove Post-->
+<!--      </button>-->
+<!--    </mat-card-actions>-->
+
+<!--    <mat-card-subtitle align="start">Likes: {{post.likes}} <span *ngIf="post.likes > 0">by {{post.usersLiked}}</span></mat-card-subtitle>-->
+
+
+
+  </mat-card>
+</div>
