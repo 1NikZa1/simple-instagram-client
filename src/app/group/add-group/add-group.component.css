@@ -1,0 +1,22 @@
+.post-image {
+  display: block;
+  margin: 1rem auto;
+  width: 400px;
+  height: auto;
+}
+.post-card {
+  display: block;
+  margin: 1rem auto;
+  width: 80%;
+}
+
+.mat-icon {
+  transform: scale(0.5);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}

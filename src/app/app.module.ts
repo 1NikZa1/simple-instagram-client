@@ -18,6 +18,12 @@ import { UserPostsComponent } from './user/user-posts/user-posts.component';
 import { EditUserComponent } from './user/edit-user/edit-user.component';
 import { AddPostComponent } from './user/add-post/add-post.component';
 import { AllGroupsComponent } from './group/all-groups/all-groups.component';
+import { GroupProfileComponent } from './group/group-profile/group-profile.component';
+import { AddGroupPostComponent } from './group/add-group-post/add-group-post.component';
+import { GroupPostsComponent } from './group/group-posts/group-posts.component';
+import { AddGroupComponent } from './group/add-group/add-group.component';
+import { EditGroupComponent } from './group/edit-group/edit-group.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -30,7 +36,12 @@ import { AllGroupsComponent } from './group/all-groups/all-groups.component';
     UserPostsComponent,
     EditUserComponent,
     AddPostComponent,
-    AllGroupsComponent
+    AllGroupsComponent,
+    GroupProfileComponent,
+    AddGroupPostComponent,
+    GroupPostsComponent,
+    AddGroupComponent,
+    EditGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +50,8 @@ import { AllGroupsComponent } from './group/all-groups/all-groups.component';
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTooltipModule
   ],
   providers: [authInterceptorProviders,
     authErrorInterceptorProviders],

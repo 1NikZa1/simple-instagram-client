@@ -1,8 +1,18 @@
-.post-card {
+.example-card {
   display: block;
+  width: 80%;
+  max-width: 400px;
   margin: 1rem auto;
-  width: 200px;
-  height: auto;
+}
+
+.group-img {
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
 }
 
 .all-groups{
@@ -11,3 +21,4 @@
   width: 60%;
   padding-top: 3rem;
 }
+

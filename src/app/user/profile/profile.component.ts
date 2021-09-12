@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from "../../models/User";
-import {TokenStorageService} from "../../service/token-storage.service";
-import {PostService} from "../../service/post.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {NotificationService} from "../../service/notification.service";
 import {ImageUploadService} from "../../service/image-upload.service";
@@ -21,9 +19,7 @@ export class ProfileComponent implements OnInit {
   userProfileImage: File;
   previewImageURL: any;
 
-  constructor(private tokenService: TokenStorageService,
-              private postService: PostService,
-              private dialog: MatDialog,
+  constructor(private dialog: MatDialog,
               private notificationService: NotificationService,
               private imageService: ImageUploadService,
               private userService: UserService) {

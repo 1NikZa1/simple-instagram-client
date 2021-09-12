@@ -3,17 +3,15 @@
 
   <span class="spacer"></span>
 
-  <button mat-icon-button *ngIf="!isLoggedIn" matTooltip="Login" routerLink="/login">
-    <mat-icon>vpn_key</mat-icon>
-  </button>
-
-
-
-  <button mat-icon-button routerLink="/groups">
+  <button mat-icon-button *ngIf="isLoggedIn" routerLink="/groups">
     <mat-icon>groups</mat-icon>
   </button>
 
   <span class="spacer"></span>
+
+  <button mat-icon-button *ngIf="!isLoggedIn" matTooltip="Login" routerLink="/login">
+    <mat-icon>vpn_key</mat-icon>
+  </button>
 
   <h3 *ngIf="isDataLoaded">{{this.user.firstname}} {{this.user.lastname}}</h3>
   <button mat-icon-button *ngIf="isLoggedIn" [matMenuTriggerFor]="menu" matTooltip="Profile">

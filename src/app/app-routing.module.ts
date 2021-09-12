@@ -8,6 +8,10 @@ import {ProfileComponent} from "./user/profile/profile.component";
 import {UserPostsComponent} from "./user/user-posts/user-posts.component";
 import {AddPostComponent} from "./user/add-post/add-post.component";
 import {AllGroupsComponent} from "./group/all-groups/all-groups.component";
+import {GroupProfileComponent} from "./group/group-profile/group-profile.component";
+import {AddGroupPostComponent} from "./group/add-group-post/add-group-post.component";
+import {GroupPostsComponent} from "./group/group-posts/group-posts.component";
+import {AddGroupComponent} from "./group/add-group/add-group.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -21,7 +25,12 @@ const routes: Routes = [
       {path: 'add', component: AddPostComponent, canActivate: [AuthGuardService]}
     ]
   },
-  {path: '404', redirectTo: 'main'}
+  {path: '404', redirectTo: 'main'},
+  { path: 'groups/:id', component: GroupProfileComponent,canActivate:[AuthGuardService],children:[
+      {path: '', component: GroupPostsComponent, canActivate: [AuthGuardService]},
+      {path: 'add', component: AddGroupPostComponent, canActivate: [AuthGuardService]},
+    ]},
+  {path: 'add-group',component: AddGroupComponent,canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

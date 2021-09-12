@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ImageUploadService} from "../../service/image-upload.service";
 import {GroupService} from "../../service/group.service";
 import {Group} from "../../models/Group";
+import {NotificationService} from "../../service/notification.service";
 
 @Component({
   selector: 'app-all-groups',
@@ -14,7 +15,8 @@ export class AllGroupsComponent implements OnInit {
   isGroupsLoaded: boolean = false;
 
   constructor(private imageService: ImageUploadService,
-              private groupService: GroupService) { }
+              private groupService: GroupService,
+              private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.groupService.getAllGroups()
@@ -33,6 +35,17 @@ export class AllGroupsComponent implements OnInit {
           group.image = data.imageBytes;
         })
     });
+  }
+
+  removeGroup(group: Group, index: number): void {
+    const result = confirm('group will be deleted');
+    if (result) {
+      this.groupService.deleteGroup(group.id!)
+        .subscribe(() => {
+          this.groups.splice(index, 1);
+          this.notificationService.showSnackBar('group deleted');
+        })
+    }
   }
 
   formatImage(image: any): any {

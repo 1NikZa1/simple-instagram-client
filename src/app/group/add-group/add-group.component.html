@@ -1,0 +1,38 @@
+<div class="post-card">
+  <div style="text-align: right">
+    <button mat-flat-button color="primary" routerLink="/groups">All Groups</button>
+  </div>
+
+  <h2>Create Post</h2>
+  <form [formGroup]="groupForm">
+
+    <img class="post-image"
+         [src]="previewImageURL || 'https://aqua-air.ru/bitrix/templates/kitlisa-market/img/shop.png'" alt="user image">
+
+    <input type="file"
+           style="display: none"
+           #fileInput
+           (change)="onFileSelected($event)">
+    <div class="container">
+      <button style="align-content: center" mat-button (click)="fileInput.click()">Pick File</button>
+    </div>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput
+             formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput
+             formControlName="description">
+    </mat-form-field>
+
+    <div style="text-align: right">
+      <button mat-flat-button color="primary" [disabled]="groupForm.invalid" (click)="submit()">
+        Create Group
+      </button>
+    </div>
+
+  </form>
+</div>
+
