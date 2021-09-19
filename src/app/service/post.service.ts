@@ -26,6 +26,10 @@ export class PostService {
     return this.http.get(POST_API + 'all');
   }
 
+  getFeed(): Observable<any> {
+    return this.http.get(POST_API + 'feed')
+  }
+
   getPostForUser(): Observable<any> {
     return this.http.get(POST_API + 'user/posts')
   }

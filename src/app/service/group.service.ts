@@ -17,6 +17,14 @@ export class GroupService {
     return this.http.get(GROUP_API + 'all');
   }
 
+  getFollowedUsers(id: number): Observable<any> {
+    return this.http.get(GROUP_API + id + '/followed')
+  }
+
+  followGroup(id: number): Observable<any> {
+    return this.http.post(GROUP_API + id + 'follow', null);
+  }
+
   createGroup(group: Group): Observable<any> {
     return this.http.post(GROUP_API + 'create', group);
   }

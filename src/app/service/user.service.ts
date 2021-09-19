@@ -20,7 +20,11 @@ export class UserService {
     return this.http.get(USER_API);
   }
 
-  updateUser(user:any):Observable<any>{
-    return this.http.post(USER_API + 'update',user);
+  getFollowedGroups(): Observable<any> {
+    return this.http.get(USER_API + 'communities')
+  }
+
+  updateUser(user: any): Observable<any> {
+    return this.http.post(USER_API + 'update', user);
   }
 }
