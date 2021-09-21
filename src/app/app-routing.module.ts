@@ -13,12 +13,14 @@ import {AddGroupPostComponent} from "./group/add-group-post/add-group-post.compo
 import {GroupPostsComponent} from "./group/group-posts/group-posts.component";
 import {AddGroupComponent} from "./group/add-group/add-group.component";
 import {UserFeedComponent} from "./user/user-feed/user-feed.component";
+import {MyGroupsComponent} from "./group/my-groups/my-groups.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'main', component: IndexComponent, canActivate: [AuthGuardService]},
-  {path: 'groups', component: AllGroupsComponent, canActivate: [AuthGuardService]},
+  {path: 'groups', component: MyGroupsComponent, canActivate: [AuthGuardService]},
+  {path: 'all-groups', component: AllGroupsComponent, canActivate: [AuthGuardService]},
   {path: 'feed', component: UserFeedComponent, canActivate: [AuthGuardService]},
   {path: '', redirectTo: 'main', pathMatch: 'full'},
   {

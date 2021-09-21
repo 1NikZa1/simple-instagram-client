@@ -14,14 +14,14 @@
   object-position: right top;
 }
 
-.all-groups{
+.all-groups {
   display: block;
   margin: 0 auto;
   width: 60%;
   padding-top: 3rem;
 }
 
-a{
+a {
   text-decoration: none; /* Убирает подчеркивание для ссылок */
   color: white;
 }

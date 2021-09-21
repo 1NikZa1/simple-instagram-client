@@ -18,6 +18,7 @@ export class IndexComponent implements OnInit {
   user: User;
   isPostsLoaded: boolean = false;
   isUserDataLoaded: boolean = false;
+  show:number = 2;
 
   constructor(private userService: UserService,
               private postService: PostService,
@@ -60,6 +61,10 @@ export class IndexComponent implements OnInit {
           post.comments = data;
         })
     });
+  }
+
+  increaseShow() {
+    this.show += 6;
   }
 
   likePost(postId: number, postIndex: number): void {

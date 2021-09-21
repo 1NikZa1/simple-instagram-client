@@ -2,12 +2,20 @@
 
   <h1>Group</h1>
   <div style="text-align: right">
-    <button mat-flat-button color="primary" (click)="openEditDialog()">Edit Info</button>
+    <button style="margin: 5px" mat-flat-button color="primary" (click)="openEditDialog()">Edit Info</button>
+    <div *ngIf="!isFollowed">
+      <button mat-flat-button color="primary" (click)="followGroup()">Follow</button>
+    </div>
+    <div *ngIf="isFollowed">
+      <button mat-flat-button color="primary" (click)="followGroup()">Unfollow</button>
+    </div>
   </div>
 
   <div style="padding-top: 2rem" class="row">
     <div class="col">
-      <img class="profile-image" [src]="previewImageURL || formatImage(groupProfileImage) || 'https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51402215-stock-illustration-male-avatar-profile-picture-use.jpg'" alt="user image">
+      <img class="profile-image"
+           [src]="previewImageURL || formatImage(groupProfileImage) || 'https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51402215-stock-illustration-male-avatar-profile-picture-use.jpg'"
+           alt="user image">
 
       <input type="file"
              style="display: none"

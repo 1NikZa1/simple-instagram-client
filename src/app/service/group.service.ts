@@ -22,7 +22,7 @@ export class GroupService {
   }
 
   followGroup(id: number): Observable<any> {
-    return this.http.post(GROUP_API + id + 'follow', null);
+    return this.http.get(GROUP_API + id + '/follow');
   }
 
   createGroup(group: Group): Observable<any> {

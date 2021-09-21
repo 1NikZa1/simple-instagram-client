@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
 import {User} from "../../models/User";
@@ -17,9 +17,10 @@ import {EditGroupComponent} from "../edit-group/edit-group.component";
 })
 export class GroupProfileComponent implements OnInit {
 
-  id: number | undefined;
+  id: number;
   private subscription: Subscription;
   isGroupDataLoaded: boolean = false;
+  isFollowed: boolean = false;
   group: Group;
   user: User;
   selectedFile: File;
@@ -31,13 +32,30 @@ export class GroupProfileComponent implements OnInit {
               private notificationService: NotificationService,
               private imageService: ImageUploadService,
               private userService: UserService,
-              private groupService: GroupService) { }
+              private groupService: GroupService) {
+  }
 
   ngOnInit(): void {
-    this.subscription = this.activateRoute.params.subscribe(params=>this.id=params['id']);
+    this.subscription = this.activateRoute.params.subscribe(params => this.id = parseInt(params['id']));
     this.userService.getCurrentUser()
       .subscribe(data => {
         this.user = data;
+      });
+
+    this.imageService.getImageToGroup(this.id!)
+      .subscribe(data => {
+        this.groupProfileImage = data.imageBytes;
+      });
+
+    this.userService.getFollowedGroups()
+      .subscribe(data => {
+        let ids: number[] = [];
+        for (let i = 0; i < data.length; i++) {
+          const id: number = data[i].id;
+          ids.push(id)
+        }
+        this.isFollowed = ids.includes(this.id);
+        console.log('isFollowed: ' + this.isFollowed)
       });
 
     this.groupService.getGroup(this.id!)
@@ -46,10 +64,13 @@ export class GroupProfileComponent implements OnInit {
         this.group = data;
         this.isGroupDataLoaded = true;
       })
+  }
 
-    this.imageService.getImageToGroup(this.id!)
-      .subscribe(data => {
-        this.groupProfileImage = data.imageBytes;
+  followGroup(): void {
+    this.groupService.followGroup(this.id!)
+      .subscribe(() => {
+        this.notificationService.showSnackBar("ok");
+        this.isFollowed = !this.isFollowed;
       });
   }
 
@@ -72,8 +93,9 @@ export class GroupProfileComponent implements OnInit {
   }
 
   onUpload(): void {
-    if (this.selectedFile != null) {
-      this.imageService.uploadImageToGroup(this.selectedFile,this.id!)
+    if (this.selectedFile != null
+    ) {
+      this.imageService.uploadImageToGroup(this.selectedFile, this.id!)
         .subscribe(() => {
           this.notificationService.showSnackBar("User image updated successfully")
         })
