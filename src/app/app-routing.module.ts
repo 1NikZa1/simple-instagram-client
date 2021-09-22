@@ -14,6 +14,7 @@ import {GroupPostsComponent} from "./group/group-posts/group-posts.component";
 import {AddGroupComponent} from "./group/add-group/add-group.component";
 import {UserFeedComponent} from "./user/user-feed/user-feed.component";
 import {MyGroupsComponent} from "./group/my-groups/my-groups.component";
+import {GroupFollowersComponent} from "./group/group-followers/group-followers.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'groups/:id', component: GroupProfileComponent,canActivate:[AuthGuardService],children:[
       {path: '', component: GroupPostsComponent, canActivate: [AuthGuardService]},
       {path: 'add', component: AddGroupPostComponent, canActivate: [AuthGuardService]},
+      {path: 'followers', component: GroupFollowersComponent, canActivate: [AuthGuardService]},
     ]},
   {path: 'add-group',component: AddGroupComponent,canActivate: [AuthGuardService]}
 ];

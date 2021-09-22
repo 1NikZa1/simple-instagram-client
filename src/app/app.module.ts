@@ -26,6 +26,7 @@ import { EditGroupComponent } from './group/edit-group/edit-group.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { UserFeedComponent } from './user/user-feed/user-feed.component';
 import { MyGroupsComponent } from './group/my-groups/my-groups.component';
+import { GroupFollowersComponent } from './group/group-followers/group-followers.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MyGroupsComponent } from './group/my-groups/my-groups.component';
     AddGroupComponent,
     EditGroupComponent,
     UserFeedComponent,
-    MyGroupsComponent
+    MyGroupsComponent,
+    GroupFollowersComponent
   ],
   imports: [
     BrowserModule,
