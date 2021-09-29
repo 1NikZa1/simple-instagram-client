@@ -72,7 +72,7 @@ export class UserPostsComponent implements OnInit {
   deleteComment(commentId: number, postIndex: number, commentIndex: number): void {
     const post = this.posts[postIndex];
     this.commentService.delete(commentId)
-      .subscribe(data => {
+      .subscribe(() => {
         this.notificationService.showSnackBar('comment removed');
         post.comments!.splice(commentIndex, 1);
       })

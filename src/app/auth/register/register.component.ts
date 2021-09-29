@@ -50,7 +50,7 @@ export class RegisterComponent implements OnInit {
       console.log(data);
       this.notificationService.showSnackBar('Successfully Registered!');
       this.router.navigate(['/login']);
-    }, error => {
+    }, () => {
       this.notificationService.showSnackBar('Something went wrong during registration');
     });
   }

@@ -44,7 +44,7 @@ export class AnotherUserProfileComponent implements OnInit {
         }
       })
 
-    this.imageService.getProfileImage()
+    this.imageService.getProfileImageById(this.id)
       .subscribe(data => {
         this.userProfileImage = data.imageBytes;
       });

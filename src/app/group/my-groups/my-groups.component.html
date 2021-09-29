@@ -8,7 +8,7 @@
   <h2>{{groups.length}} my groups</h2>
 
 
-  <mat-card class="example-card" *ngFor="let group of groups; let i = index">
+  <mat-card class="example-card" *ngFor="let group of groups">
     <a routerLink="/groups/{{group.id}}">
       <mat-card-title-group>
         <mat-card-title>{{group.name}}</mat-card-title>

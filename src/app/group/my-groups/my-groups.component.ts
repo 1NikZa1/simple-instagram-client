@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Group} from "../../models/Group";
 import {ImageUploadService} from "../../service/image-upload.service";
 import {GroupService} from "../../service/group.service";
-import {NotificationService} from "../../service/notification.service";
 import {UserService} from "../../service/user.service";
 
 @Component({
@@ -17,8 +16,7 @@ export class MyGroupsComponent implements OnInit {
 
   constructor(private imageService: ImageUploadService,
               private groupService: GroupService,
-              private userService: UserService,
-              private notificationService: NotificationService) { }
+              private userService: UserService) { }
 
   ngOnInit(): void {
     this.userService.getFollowedGroups()
@@ -37,17 +35,6 @@ export class MyGroupsComponent implements OnInit {
           group.image = data.imageBytes;
         })
     });
-  }
-
-  removeGroup(group: Group, index: number): void {
-    const result = confirm('group will be deleted');
-    if (result) {
-      this.groupService.deleteGroup(group.id!)
-        .subscribe(() => {
-          this.groups.splice(index, 1);
-          this.notificationService.showSnackBar('group deleted');
-        })
-    }
   }
 
   formatImage(image: any): any {

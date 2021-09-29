@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ImageUploadService} from "../../service/image-upload.service";
 import {GroupService} from "../../service/group.service";
 import {Group} from "../../models/Group";
-import {NotificationService} from "../../service/notification.service";
 
 @Component({
   selector: 'app-all-groups',
@@ -13,10 +12,11 @@ export class AllGroupsComponent implements OnInit {
 
   groups: Group[];
   isGroupsLoaded: boolean = false;
+  searchWord: string;
 
   constructor(private imageService: ImageUploadService,
-              private groupService: GroupService,
-              private notificationService: NotificationService) { }
+              private groupService: GroupService) {
+  }
 
   ngOnInit(): void {
     this.groupService.getAllGroups()
@@ -28,6 +28,15 @@ export class AllGroupsComponent implements OnInit {
       })
   }
 
+  searchThis() {
+    this.groups.forEach(group => {
+      if (group.name.toLowerCase().includes(this.searchWord.toLowerCase())) {
+        this.groups.splice(this.groups.indexOf(group), 1)
+        this.groups.unshift(group)
+      }
+    })
+  }
+
   getImagesToGroups(groups: Group[]): void {
     groups.forEach(group => {
       this.imageService.getImageToGroup(group.id!)
@@ -36,18 +45,6 @@ export class AllGroupsComponent implements OnInit {
         })
     });
   }
-
-  removeGroup(group: Group, index: number): void {
-    const result = confirm('group will be deleted');
-    if (result) {
-      this.groupService.deleteGroup(group.id!)
-        .subscribe(() => {
-          this.groups.splice(index, 1);
-          this.notificationService.showSnackBar('group deleted');
-        })
-    }
-  }
-
   formatImage(image: any): any {
     if (image == null) {
       return null;

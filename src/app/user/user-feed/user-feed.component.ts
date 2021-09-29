@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Post} from "../../models/Post";
 import {User} from "../../models/User";
 import {UserService} from "../../service/user.service";
@@ -18,6 +18,7 @@ export class UserFeedComponent implements OnInit {
   user: User;
   isPostsLoaded: boolean = false;
   isUserDataLoaded: boolean = false;
+  searchword: string;
 
   constructor(private userService: UserService,
               private postService: PostService,
@@ -44,6 +45,15 @@ export class UserFeedComponent implements OnInit {
       });
   }
 
+  searchThis() {
+    this.posts.forEach(post => {
+      if (post.title.toLowerCase().includes(this.searchword.toLowerCase())) {
+        this.posts.splice(this.posts.indexOf(post), 1)
+        this.posts.unshift(post)
+      }
+    })
+  }
+
   getImagesToPosts(posts: Post[]): void {
     posts.forEach(post => {
       this.imageService.getImageToPost(post.id!)
@@ -63,7 +73,7 @@ export class UserFeedComponent implements OnInit {
   }
 
   likePost(postId: number, postIndex: number): void {
-    const  post = this.posts[postIndex];
+    const post = this.posts[postIndex];
     console.log(post);
 
     if (!post.usersLiked!.includes(this.user.username)) {
@@ -83,21 +93,21 @@ export class UserFeedComponent implements OnInit {
     }
   }
 
-  postComment(message: string,postId:number,postIndex:number):void{
+  postComment(message: string, postId: number, postIndex: number): void {
     const post = this.posts[postIndex];
     console.log(post);
-    this.commentService.addCommentToPost(postId,message)
-      .subscribe(data =>{
+    this.commentService.addCommentToPost(postId, message)
+      .subscribe(data => {
         console.log(data);
         post.comments?.push(data);
       })
   }
 
-  formatImage(image: any):any{
-    if (image == null){
+  formatImage(image: any): any {
+    if (image == null) {
       return null;
     }
-    return 'data:image/jpeg;base64,' +image;
+    return 'data:image/jpeg;base64,' + image;
   }
 
 }
