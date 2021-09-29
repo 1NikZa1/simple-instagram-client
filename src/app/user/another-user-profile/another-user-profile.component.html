@@ -1,0 +1,23 @@
+<div *ngIf="isUserDataLoaded" class="user-profile">
+
+  <h1>Profile</h1>
+
+  <div style="padding-top: 2rem" class="row">
+    <div class="col">
+      <img class="profile-image" [src]="previewImageURL || formatImage(userProfileImage) || 'https://st.depositphotos.com/1779253/5140/v/600/depositphotos_51402215-stock-illustration-male-avatar-profile-picture-use.jpg'" alt="user image">
+    </div>
+    <div class="col" style="text-align: left">
+
+      <h2>{{user.username}}</h2>
+
+      <h3 style="font-style: italic">{{user.firstname}} {{user.lastname}}</h3>
+      <p>{{user.bio}}</p>
+    </div>
+
+    <mat-divider style="margin: 2rem 0"></mat-divider>
+
+    <router-outlet></router-outlet>
+
+  </div>
+
+</div>

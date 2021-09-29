@@ -1,0 +1,27 @@
+.example-card {
+  display: block;
+  width: 80%;
+  max-width: 400px;
+  margin: 1rem auto;
+}
+
+.group-img {
+  width: 75px;
+  height: 75px;
+  display: block;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
+  object-position: right top;
+}
+
+.all-groups{
+  display: block;
+  margin: 0 auto;
+  width: 60%;
+  padding-top: 3rem;
+}
+
+a{
+  text-decoration: none; /* Убирает подчеркивание для ссылок */
+  color: white;
+}

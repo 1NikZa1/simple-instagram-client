@@ -15,6 +15,9 @@ import {AddGroupComponent} from "./group/add-group/add-group.component";
 import {UserFeedComponent} from "./user/user-feed/user-feed.component";
 import {MyGroupsComponent} from "./group/my-groups/my-groups.component";
 import {GroupFollowersComponent} from "./group/group-followers/group-followers.component";
+import {ManageGroupsComponent} from "./group/manage-groups/manage-groups.component";
+import {AnotherUserProfileComponent} from "./user/another-user-profile/another-user-profile.component";
+import {AnotherUserPostsComponent} from "./user/another-user-posts/another-user-posts.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -22,12 +25,18 @@ const routes: Routes = [
   {path: 'main', component: IndexComponent, canActivate: [AuthGuardService]},
   {path: 'groups', component: MyGroupsComponent, canActivate: [AuthGuardService]},
   {path: 'all-groups', component: AllGroupsComponent, canActivate: [AuthGuardService]},
+  {path: 'manage-groups', component: ManageGroupsComponent, canActivate: [AuthGuardService]},
   {path: 'feed', component: UserFeedComponent, canActivate: [AuthGuardService]},
   {path: '', redirectTo: 'main', pathMatch: 'full'},
   {
     path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService], children: [
       {path: '', component: UserPostsComponent, canActivate: [AuthGuardService]},
       {path: 'add', component: AddPostComponent, canActivate: [AuthGuardService]}
+    ]
+  },
+  {
+    path: 'user/:id', component: AnotherUserProfileComponent, canActivate: [AuthGuardService], children: [
+      {path: '', component: AnotherUserPostsComponent, canActivate: [AuthGuardService]}
     ]
   },
   {path: '404', redirectTo: 'main'},

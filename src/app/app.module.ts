@@ -27,6 +27,9 @@ import {MatTooltipModule} from "@angular/material/tooltip";
 import { UserFeedComponent } from './user/user-feed/user-feed.component';
 import { MyGroupsComponent } from './group/my-groups/my-groups.component';
 import { GroupFollowersComponent } from './group/group-followers/group-followers.component';
+import { ManageGroupsComponent } from './group/manage-groups/manage-groups.component';
+import { AnotherUserProfileComponent } from './user/another-user-profile/another-user-profile.component';
+import { AnotherUserPostsComponent } from './user/another-user-posts/another-user-posts.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { GroupFollowersComponent } from './group/group-followers/group-followers
     EditGroupComponent,
     UserFeedComponent,
     MyGroupsComponent,
-    GroupFollowersComponent
+    GroupFollowersComponent,
+    ManageGroupsComponent,
+    AnotherUserProfileComponent,
+    AnotherUserPostsComponent
   ],
   imports: [
     BrowserModule,

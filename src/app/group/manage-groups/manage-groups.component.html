@@ -17,9 +17,11 @@
       </mat-card-title-group>
     </a>
     <mat-card-content>
-      {{group.description.substr(0, 40) + '...'}}
+      <mat-card-actions align="end">
+        <button color="warn" mat-button (click)="removeGroup(group, i)">
+          <mat-icon color="warn">delete</mat-icon>
+        </button>
+      </mat-card-actions>
     </mat-card-content>
   </mat-card>
-
-
 </div>
