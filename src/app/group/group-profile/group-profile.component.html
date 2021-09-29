@@ -2,7 +2,9 @@
 
   <h1>Group</h1>
   <div style="text-align: right">
-    <button style="margin: 5px" mat-flat-button color="primary" (click)="openEditDialog()">Edit Info</button>
+    <div *ngIf="isAdmin">
+      <button style="margin: 5px" mat-flat-button color="primary" (click)="openEditDialog()">Edit Info</button>
+    </div>
     <div *ngIf="!isFollowed">
       <button style="margin: 5px" mat-flat-button color="primary" (click)="followGroup()">Follow</button>
     </div>
@@ -10,7 +12,8 @@
       <button style="margin: 5px" mat-flat-button color="primary" (click)="followGroup()">Unfollow</button>
     </div>
     <div>
-      <button style="margin: 5px" mat-flat-button color="primary" routerLink="/groups/{{id}}/followers">Followers</button>
+      <button style="margin: 5px" mat-flat-button color="primary" routerLink="/groups/{{id}}/followers">Followers
+      </button>
     </div>
   </div>
 

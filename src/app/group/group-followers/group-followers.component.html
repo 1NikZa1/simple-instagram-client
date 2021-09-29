@@ -1,1 +1,27 @@
-<p>group-followers works!</p>
+<div *ngIf="isUsersLoaded" xmlns="http://www.w3.org/1999/html" class="all-groups">
+  <div style="text-align: right">
+    <button mat-flat-button color="primary" routerLink="/groups/{{id}}">Group Posts</button>
+  </div>
+
+  <h2>{{users.length}} users</h2>
+
+
+  <mat-card class="example-card" *ngFor="let user of users; let i = index">
+    <a style="" routerLink="/user/{{user.id}}">
+      <mat-card-title-group>
+        <mat-card-title>{{user.firstname + " " + user.lastname}}</mat-card-title>
+        <mat-card-actions align="end">
+          <button *ngIf="isAdmin" color="warn" mat-button (click)="removeUser(user, i)">
+            <mat-icon color="warn">delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card-title-group>
+    </a>
+
+
+
+
+  </mat-card>
+
+
+</div>

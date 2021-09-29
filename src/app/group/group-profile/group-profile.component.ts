@@ -26,6 +26,7 @@ export class GroupProfileComponent implements OnInit {
   selectedFile: File;
   groupProfileImage: File;
   previewImageURL: any;
+  isAdmin: boolean = false;
 
   constructor(private activateRoute: ActivatedRoute,
               private dialog: MatDialog,
@@ -41,6 +42,14 @@ export class GroupProfileComponent implements OnInit {
       .subscribe(data => {
         this.user = data;
       });
+
+    this.groupService.getAdmin(this.id!)
+      .subscribe(data => {
+        this.userService.getCurrentUser().subscribe(user => {
+          if (user.id == data.id)
+            this.isAdmin = true;
+        })
+      })
 
     this.imageService.getImageToGroup(this.id!)
       .subscribe(data => {

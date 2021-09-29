@@ -33,6 +33,10 @@ export class GroupService {
     return this.http.get(GROUP_API + id);
   }
 
+  getAdmin(id: number): Observable<any> {
+    return this.http.get(GROUP_API + id + '/admin');
+  }
+
   updateGroup(id: number, group: Group): Observable<any> {
     return this.http.post(GROUP_API + id + '/update', group);
   }

@@ -1,6 +1,6 @@
 
 <div *ngIf="isGroupPostsLoaded" xmlns="http://www.w3.org/1999/html">
-  <div style="text-align: right">
+  <div *ngIf="isAdmin" style="text-align: right">
     <button mat-flat-button color="primary" routerLink="/groups/{{id}}/add">Add Post</button>
   </div>
 

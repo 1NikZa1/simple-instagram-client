@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Post} from "../../models/Post";
 import {PostService} from "../../service/post.service";
 import {ImageUploadService} from "../../service/image-upload.service";
@@ -6,6 +6,8 @@ import {CommentService} from "../../service/comment.service";
 import {NotificationService} from "../../service/notification.service";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
+import {GroupService} from "../../service/group.service";
+import {UserService} from "../../service/user.service";
 
 @Component({
   selector: 'app-group-posts',
@@ -18,15 +20,27 @@ export class GroupPostsComponent implements OnInit {
   posts: Post[];
   id: number | undefined;
   private subscription: Subscription;
+  isAdmin: boolean = false;
 
   constructor(private activateRoute: ActivatedRoute,
               private postService: PostService,
               private imageService: ImageUploadService,
+              private groupService: GroupService,
+              private userService: UserService,
               private commentService: CommentService,
-              private notificationService: NotificationService) { }
+              private notificationService: NotificationService) {
+  }
 
   ngOnInit(): void {
-    this.subscription = this.activateRoute.params.subscribe(params=>this.id=params['id']);
+    this.subscription = this.activateRoute.params.subscribe(params => this.id = params['id']);
+
+    this.groupService.getAdmin(this.id!)
+      .subscribe(data => {
+        this.userService.getCurrentUser().subscribe(user => {
+          if (user.id == data.id)
+            this.isAdmin = true;
+        })
+      })
 
     this.postService.getPostsForGroup(this.id!)
       .subscribe(data => {
