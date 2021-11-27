@@ -34,6 +34,10 @@ export class PostService {
     return this.http.get(POST_API + 'user/posts')
   }
 
+  getPostForUserById(userId: number): Observable<any> {
+    return this.http.get(POST_API + 'user/' + userId + '/posts')
+  }
+
   getPostsForGroup(groupId: number): Observable<any> {
     return this.http.get(POST_API + 'community/' + groupId + '/posts')
   }
